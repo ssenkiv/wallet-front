@@ -1,0 +1,36 @@
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 327px;
+  height: 40px;
+}
+
+.icon {
+  position: absolute;
+  left: var(--spacing-md);
+  color: var(--color-secondary);
+  pointer-events: none;
+}
+
+.input {
+  width: 100%;
+  height: 100%;
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-sm) var(--spacing-2xl);
+  border: none;
+  border-radius: var(--border-radius-lg);
+  background-color: var(--color-card-bg);
+  font-size: var(--font-size-base);
+  font-family: inherit;
+  color: var(--color-secondary);
+  transition: all var(--transition-base);
+}
+
+.input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary);
+}
+
+.input::placeholder {
+  color: var(--color-neutral-medium);
+}

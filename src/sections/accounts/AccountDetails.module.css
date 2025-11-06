@@ -1,0 +1,118 @@
+.container {
+  background-color: var(--color-card-bg);
+  border-radius: var(--border-radius-md);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-lg);
+  min-width: 280px;
+  max-width: 320px;
+  animation: fadeIn var(--transition-fast);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+}
+
+.userInfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-xs);
+  width: 100%;
+}
+
+.userName {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-secondary);
+  margin: 0;
+  text-align: center;
+}
+
+.userEmail {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-medium);
+  margin: 0;
+  text-align: center;
+  word-break: break-all;
+}
+
+.accountBadge {
+  display: inline-block;
+  background-color: var(--color-primary);
+  color: var(--color-card-bg);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  padding: var(--spacing-xs) var(--spacing-md);
+  border-radius: var(--border-radius-md);
+  margin-top: var(--spacing-xs);
+}
+
+.divider {
+  height: 1px;
+  background-color: var(--color-neutral-very-light);
+  margin: var(--spacing-md) 0;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md) 0;
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: none;
+  border: none;
+  border-radius: var(--border-radius-sm);
+  cursor: pointer;
+  transition: background-color var(--transition-fast);
+  width: 100%;
+  text-align: left;
+  font-size: var(--font-size-sm);
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-normal);
+}
+
+.menuItem:hover {
+  background-color: var(--color-background);
+}
+
+.menuItem:active {
+  background-color: var(--color-neutral-very-light);
+}
+
+.menuIcon {
+  color: var(--color-secondary);
+  flex-shrink: 0;
+}
+
+.logoutItem {
+  color: var(--color-primary);
+}
+
+.logoutItem .menuIcon {
+  color: var(--color-primary);
+}
+
+.logoutItem:hover {
+  background-color: rgba(227, 66, 85, 0.1);
+}

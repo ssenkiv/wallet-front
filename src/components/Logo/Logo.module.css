@@ -1,0 +1,47 @@
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-secondary);
+    flex-shrink: 0;
+}
+
+.text {
+    font-weight: var(--font-weight-bold);
+    color: var(--color-secondary);
+    font-size: var(--font-size-xl);
+}
+
+.sm .icon {
+    width: 24px;
+    height: 24px;
+}
+
+.sm .text {
+    font-size: var(--font-size-base);
+}
+
+.md .icon {
+    width: 32px;
+    height: 32px;
+}
+
+.md .text {
+    font-size: var(--font-size-xl);
+}
+
+.lg .icon {
+    width: 40px;
+    height: 40px;
+}
+
+.lg .text {
+    font-size: var(--font-size-2xl);
+}
