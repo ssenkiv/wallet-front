@@ -1,0 +1,42 @@
+.badge {
+  position: absolute;
+  background-color: var(--color-primary);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+}
+
+.number {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 var(--spacing-xs);
+}
+
+.top-right {
+  top: -2px;
+  right: -2px;
+}
+
+.top-left {
+  top: -2px;
+  left: -2px;
+}
+
+.bottom-right {
+  bottom: -2px;
+  right: -2px;
+}
+
+.bottom-left {
+  bottom: -2px;
+  left: -2px;
+}

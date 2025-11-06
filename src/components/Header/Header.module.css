@@ -1,0 +1,77 @@
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+  padding: var(--spacing-lg) var(--spacing-xl);
+  background-color: transparent;
+}
+
+.searchWrapper {
+  flex: 1;
+  max-width: 500px;
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-lg);
+}
+
+.languageButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0 var(--spacing-md);
+  border: none;
+  background-color: transparent;
+  color: var(--color-secondary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  border-radius: var(--border-radius-sm);
+  transition: all var(--transition-base);
+}
+
+.languageButton:hover {
+  background-color: var(--color-neutral-very-light);
+}
+
+.notificationButton {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  color: var(--color-secondary);
+  cursor: pointer;
+  border-radius: 50%;
+  transition: all var(--transition-base);
+}
+
+.notificationButton:hover {
+  background-color: var(--color-neutral-very-light);
+}
+
+.avatarWrapper {
+  display: flex;
+  align-items: center;
+}
+
+.avatarButton {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0;
+  border-radius: 50%;
+  transition: all var(--transition-base);
+}
+
+.avatarButton:hover {
+  opacity: 0.8;
+}
