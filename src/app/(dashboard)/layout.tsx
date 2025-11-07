@@ -6,7 +6,7 @@ import Header from '@/components/Header/Header';
 import Sidebar from '@/components/Sidebar/Sidebar';
 import styles from './layout.module.css';
 
-import useAccountViewModel from '@/hooks/accounts/useAccountViewModel';
+import useAccountViewModel from '@/hooks/accounts/view/useAccountViewModel';
 
 export default function DashboardLayout({
   children,

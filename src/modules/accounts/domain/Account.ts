@@ -6,4 +6,5 @@ export interface Account {
   createdAt: Date;
   updateAt: Date;
   profilePictureUrl?: string;
+  password: string
 }

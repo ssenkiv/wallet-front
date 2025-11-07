@@ -4,7 +4,7 @@ import { AccountViewModel } from '@/view-models/accounts/AccountViewModel';
 import getAccountViewModel from '@/view-models/accounts/getAccountViewModel';
 
 export default function useAccountViewModel(id: number) {
-  const { data, isLoading, error } = useGetAccount(id);
+  const {data, isLoading, error} = useGetAccount(id);
 
   const viewModel = useMemo<AccountViewModel | undefined>(() => {
     if (!data) return undefined;
