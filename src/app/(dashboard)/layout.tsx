@@ -6,14 +6,14 @@ import Header from '@/components/Header/Header';
 import Sidebar from '@/components/Sidebar/Sidebar';
 import styles from './layout.module.css';
 
-import useGetAccount from '@/hooks/accounts/useGetAccount';
+import useAccountViewModel from '@/hooks/accounts/view/useAccountViewModel';
 
 export default function DashboardLayout({
   children,
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const {data, isLoading, error} = useGetAccount(1)
+  const {data, isLoading, error} = useAccountViewModel(1);
 
   if (isLoading) return <p>Loading user details...</p>;
   if (error) return <p>Something went wrong 😢</p>;
@@ -30,9 +30,9 @@ export default function DashboardLayout({
 
       <div className={styles.mainArea}>
         <Header
-          userName={data.firstName}
+          userName={data.fullName}
           userEmail={data.email}
-          userAvatar={data.profilePictureUrl}
+          userAvatar={data.avatarUrl}
           accountType="Premium"
           notificationCount={2}
           onProfileClick={() => console.log('Profile clicked')}
