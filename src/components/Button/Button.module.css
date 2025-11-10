@@ -1,10 +1,10 @@
 .button {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--spacing-sm);
   border: none;
-  border-radius: var(--border-radius-sm);
+  border-radius: var(--border-radius-lg);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
   transition: all var(--transition-base);
@@ -37,16 +37,22 @@
   background-color: var(--color-neutral-very-light);
 }
 
+.danger {
+  background-color: var(--color-accent-crimson);
+  color: white;
+  padding: var(--spacing-md) var(--spacing-lg);
+}
+
+.danger:hover:not(:disabled) {
+  background-color: #c0392b;
+}
+
 .icon {
   background-color: transparent;
   color: var(--color-secondary);
   padding: var(--spacing-sm);
   min-width: 40px;
   min-height: 40px;
-}
-
-.icon:hover:not(:disabled) {
-  background-color: var(--color-neutral-very-light);
 }
 
 .sm {
