@@ -32,7 +32,7 @@ export default function AccountDetailsModal ({
 }: Readonly<AccountDetailsModalProps>) {
   const [mode, setMode] = useState<ModalMode>(ModalMode.VIEW)
 
-  const { data: account, isLoading, error } = useGetAccount(accountId ?? 0)
+  const { data: account, isLoading, error } = useGetAccount(accountId)
   const { mutate: updateAccount, isPending } = useUpdateAccount()
   const { mutate: deleteAccount, isPending: isDeleting } = useDeleteAccount()
 
@@ -105,10 +105,11 @@ export default function AccountDetailsModal ({
 
     if (!confirmed) return
 
+    handleClose()
+
     deleteAccount(account.id, {
       onSuccess: () => {
         toast.success('Account deleted successfully!')
-        onClose()
       },
       onError: (error) => {
         toast.error(
@@ -120,13 +121,6 @@ export default function AccountDetailsModal ({
   if (!isOpen || !accountId) {
     return null
   }
-
-  const fullName = account
-    ? `${account.firstName} ${account.lastName}`
-    : 'Loading...'
-  const initials = account
-    ? `${account.firstName[0]}${account.lastName[0]}`
-    : ''
 
   return (
     <Modal isOpen={isOpen} onClose={handleClose} title="Account Details"
@@ -150,12 +144,12 @@ export default function AccountDetailsModal ({
           <div className={styles.header}>
             <Avatar
               src={account.avatarUrl}
-              alt={fullName}
-              fallback={initials}
+              alt={`${account.firstName} ${account.lastName}`}
+              fallback={`${account.firstName[0]}${account.lastName[0]}`}
               size="lg"
             />
             <div className={styles.headerInfo}>
-              <h2 className={styles.name}>{fullName}</h2>
+              <h2 className={styles.name}>{`${account.firstName} ${account.lastName}`}</h2>
               <p className={styles.id}>Account #{account.id}</p>
             </div>
           </div>

@@ -7,15 +7,11 @@ import { AccountViewModel } from '@/view-models/accounts/AccountViewModel';
 
 const getAccountById = getById(mockApiRepository);
 
-export default function useGetAccount(id: number) {
+export default function useGetAccount(id: number | null) {
   const { data, isLoading, error } = useQuery({
     queryKey: ['account', id],
-    queryFn: () => {
-      if (!id || id <= 0) {
-        throw new Error(`Invalid account ID: ${id}`);
-      }
-      return getAccountById(id);
-    },
+    queryFn: () => getAccountById(id!),
+    enabled: !!id && id > 0,
   });
 
   const viewModel = useMemo<AccountViewModel | undefined>(() => {
