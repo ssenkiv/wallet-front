@@ -71,6 +71,12 @@
   font-size: var(--font-size-sm);
 }
 
+.actionsCell {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
 .errorState,
 .loadingState {
   display: flex;

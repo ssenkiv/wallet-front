@@ -1,6 +1,7 @@
 'use client';
 
 import { useMemo, useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { ColumnDef } from '@tanstack/react-table'
 import Avatar from '@/components/Avatar/Avatar'
 import useGetAllAccounts from '@/hooks/accounts/useGetAllAccounts'
@@ -13,9 +14,10 @@ import AccountCreateModal
   from '@/sections/accounts/AccountCreateModal/AccountCreateModal'
 import AccountDetailsModal
   from '@/sections/accounts/AccountDetailsModal/AccountDetailsModal'
-import { Plus } from 'lucide-react'
+import { Plus, ExternalLink } from 'lucide-react'
 
 export default function AccountsPage() {
+  const router = useRouter()
   const { data, isLoading, error } = useGetAllAccounts();
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false)
   const [isDetailsModalOpen, setIsDetailsModalOpen] = useState(false)
@@ -25,6 +27,11 @@ export default function AccountsPage() {
   const handleRowClick = (account: AccountViewModel) => {
     setSelectedAccountId(account.id)
     setIsDetailsModalOpen(true)
+  }
+
+  const handleFullDetailsClick = (accountId: number, e: React.MouseEvent) => {
+    e.stopPropagation()
+    router.push(`/accounts/${accountId}`)
   }
 
   const columns = useMemo<ColumnDef<AccountViewModel>[]>(() => [
@@ -70,7 +77,24 @@ export default function AccountsPage() {
         </span>
       ),
     },
-  ], []);
+    {
+      id: 'actions',
+      header: 'Actions',
+      size: 150,
+      cell: ({row}) => (
+        <div className={styles.actionsCell}>
+          <Button
+            variant="secondary"
+            size="sm"
+            onClick={(e) => handleFullDetailsClick(row.original.id, e)}
+            icon={<ExternalLink size={16} />}
+          >
+            Full Details
+          </Button>
+        </div>
+      ),
+    },
+  ], [router]);
 
   if (error) {
     return (
