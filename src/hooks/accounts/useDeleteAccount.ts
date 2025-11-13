@@ -12,8 +12,8 @@ export default function useDeleteAccount() {
     mutationKey: ['deleteAccount'],
     mutationFn: (id: number) => delAcc(id),
     onSuccess: (_, id) => {
+      queryClient.removeQueries({ queryKey: ['account', id] });
       queryClient.invalidateQueries({ queryKey: ['accounts'] });
-      queryClient.invalidateQueries({ queryKey: ['account', id] });
     }
   })
 }
