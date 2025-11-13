@@ -1,48 +1,42 @@
 'use client';
 
-import { Bell } from 'lucide-react';
-import SearchBar from '@/components/SearchBar/SearchBar';
-import AvatarWithDetails from '@/sections/accounts/AvatarWithDetails';
-import Badge from '@/components/Badge/Badge';
-import styles from './Header.module.css';
+import { Bell } from 'lucide-react'
+import SearchBar from '@/components/SearchBar/SearchBar'
+import AvatarWithDetails from '@/sections/accounts/AvatarWithDetails/AvatarWithDetails'
+import Badge from '@/components/Badge/Badge'
+import styles from './Header.module.css'
+import { UserProfile } from '@/view-models/accounts/UserViewModel'
 
 export interface HeaderProps {
-  userName?: string;
-  userEmail?: string;
-  userAvatar?: string;
-  accountType?: string;
+  user?: UserProfile;
   notificationCount?: number;
   language?: string;
   onSearch?: (value: string) => void;
   onNotificationClick?: () => void;
   onProfileClick?: () => void;
   onSettingsClick?: () => void;
-  onSecurityClick?: () => void;
-  onBillingClick?: () => void;
   onLogoutClick?: () => void;
   onLanguageClick?: () => void;
 }
 
 export default function Header({
-  userName = 'User',
-  userEmail = 'user@nerdypay.com',
-  userAvatar,
-  accountType = 'Basic',
+  user = { name: 'User', email: 'user@nerdypay.com', accountType: 'Basic' },
   notificationCount = 0,
   language = 'EN',
   onSearch,
   onNotificationClick,
   onProfileClick,
   onSettingsClick,
-  onSecurityClick,
-  onBillingClick,
   onLogoutClick,
   onLanguageClick,
 }: Readonly<HeaderProps>) {
   return (
     <header className={styles.header}>
       <div className={styles.searchWrapper}>
-        <SearchBar onSearch={onSearch} placeholder="Search" />
+        <SearchBar
+          placeholder="Search"
+          onChange={onSearch ? (e) => onSearch(e.target.value) : undefined}
+        />
       </div>
 
       <div className={styles.actions}>
@@ -67,15 +61,10 @@ export default function Header({
 
         <div className={styles.avatarWrapper}>
           <AvatarWithDetails
-            userName={userName}
-            userEmail={userEmail}
-            userAvatar={userAvatar}
-            accountType={accountType}
+            user={user}
             size="md"
             onProfileClick={onProfileClick}
             onSettingsClick={onSettingsClick}
-            onSecurityClick={onSecurityClick}
-            onBillingClick={onBillingClick}
             onLogoutClick={onLogoutClick}
           />
         </div>
