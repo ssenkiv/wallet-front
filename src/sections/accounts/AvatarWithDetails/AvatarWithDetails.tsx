@@ -1,33 +1,24 @@
 'use client';
 
-import { useState } from 'react';
-import Avatar from '@/components/Avatar/Avatar';
-import AccountDetails from './AccountDetails';
-import styles from './AvatarWithDetails.module.css';
+import { useState } from 'react'
+import Avatar from '@/components/Avatar/Avatar'
+import AccountDetails from '../AccountDetails/AccountDetails'
+import styles from './AvatarWithDetails.module.css'
+import { UserProfile } from '@/view-models/accounts/UserViewModel'
 
 export interface AvatarWithDetailsProps {
-  userName: string;
-  userEmail: string;
-  userAvatar?: string;
-  accountType: string;
+  user: UserProfile;
   size?: 'sm' | 'md' | 'lg';
   onProfileClick?: () => void;
   onSettingsClick?: () => void;
-  onSecurityClick?: () => void;
-  onBillingClick?: () => void;
   onLogoutClick?: () => void;
 }
 
 export default function AvatarWithDetails({
-  userName,
-  userEmail,
-  userAvatar,
-  accountType,
+  user,
   size = 'md',
   onProfileClick,
   onSettingsClick,
-  onSecurityClick,
-  onBillingClick,
   onLogoutClick,
 }: Readonly<AvatarWithDetailsProps>) {
   const [isHovered, setIsHovered] = useState(false);
@@ -40,10 +31,10 @@ export default function AvatarWithDetails({
     >
       <div className={styles.avatarContainer}>
         <Avatar
-          src={userAvatar}
-          alt={userName}
+          src={user.avatar}
+          alt={user.name}
           size={size}
-          fallback={userName.charAt(0)}
+          fallback={user.name.charAt(0)}
           className={styles.avatar}
         />
       </div>
@@ -51,14 +42,9 @@ export default function AvatarWithDetails({
       {isHovered && (
         <div className={styles.dropdown}>
           <AccountDetails
-            userName={userName}
-            userEmail={userEmail}
-            userAvatar={userAvatar}
-            accountType={accountType}
+            user={user}
             onProfileClick={onProfileClick}
             onSettingsClick={onSettingsClick}
-            onSecurityClick={onSecurityClick}
-            onBillingClick={onBillingClick}
             onLogoutClick={onLogoutClick}
           />
         </div>
