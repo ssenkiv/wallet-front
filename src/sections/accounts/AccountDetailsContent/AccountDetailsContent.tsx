@@ -2,14 +2,13 @@
 
 import { useEffect, useState } from 'react'
 import { toast } from 'react-toastify'
-import { useForm } from '@tanstack/react-form'
+import { useForm, SubmitHandler } from 'react-hook-form'
 import Button from '@/components/Button/Button'
 import Avatar from '@/components/Avatar/Avatar'
 import FormField from '@/components/FormField/FormField'
 import useGetAccount from '@/hooks/accounts/useGetAccount'
 import useUpdateAccount from '@/hooks/accounts/useUpdateAccount'
 import useDeleteAccount from '@/hooks/accounts/useDeleteAccount'
-import { accountValidators } from '@/utils/formValidators'
 import { X } from 'lucide-react'
 import styles from './AccountDetailsContent.module.css'
 
@@ -24,6 +23,13 @@ enum ViewMode {
   EDIT = 'edit',
 }
 
+interface AccountUpdateFormData {
+  firstName: string;
+  lastName: string;
+  email: string;
+  profilePictureUrl?: string;
+}
+
 export default function AccountDetailsContent ({
   accountId,
   onClose,
@@ -35,57 +41,67 @@ export default function AccountDetailsContent ({
   const { mutate: updateAccount, isPending } = useUpdateAccount()
   const { mutate: deleteAccount, isPending: isDeleting } = useDeleteAccount()
 
-  const form = useForm({
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isValid },
+  } = useForm<AccountUpdateFormData>({
+    mode: 'onChange',
     defaultValues: {
       firstName: '',
       lastName: '',
       email: '',
       profilePictureUrl: '',
     },
-    onSubmit: async ({ value }) => {
-      if (!account) return
-
-      updateAccount(
-        {
-          id: account.id,
-          updateAccount: {
-            firstName: value.firstName,
-            lastName: value.lastName,
-            email: value.email,
-            profilePictureUrl: value.profilePictureUrl || undefined,
-          },
-        },
-        {
-          onSuccess: () => {
-            toast.success('Account updated successfully!')
-            setMode(ViewMode.VIEW)
-          },
-          onError: (error) => {
-            toast.error(error instanceof Error
-              ? error.message
-              : 'Failed to update account')
-          },
-        },
-      )
-    },
-  })
+  });
 
   useEffect(() => {
     if (account) {
-      form.reset()
-      form.setFieldValue('firstName', account.firstName)
-      form.setFieldValue('lastName', account.lastName)
-      form.setFieldValue('email', account.email)
-      form.setFieldValue('profilePictureUrl', account.avatarUrl || '')
+      reset({
+        firstName: account.firstName,
+        lastName: account.lastName,
+        email: account.email,
+        profilePictureUrl: account.profilePictureUrl || '',
+      });
     }
-  })
+  }, [account, reset]);
+
+  const onSubmit: SubmitHandler<AccountUpdateFormData> = (data) => {
+    if (!account) return
+
+    updateAccount(
+      {
+        id: account.id,
+        updateAccount: {
+          firstName: data.firstName,
+          lastName: data.lastName,
+          email: data.email,
+          profilePictureUrl: data.profilePictureUrl || undefined,
+        },
+      },
+      {
+        onSuccess: () => {
+          toast.success('Account updated successfully!')
+          setMode(ViewMode.VIEW)
+        },
+        onError: (error) => {
+          toast.error(error instanceof Error
+            ? error.message
+            : 'Failed to update account')
+        },
+      },
+    )
+  };
 
   const handleCancel = () => {
     if (account) {
-      form.setFieldValue('firstName', account.firstName)
-      form.setFieldValue('lastName', account.lastName)
-      form.setFieldValue('email', account.email)
-      form.setFieldValue('profilePictureUrl', account.avatarUrl || '')
+      reset({
+        firstName: account.firstName,
+        lastName: account.lastName,
+        email: account.email,
+        profilePictureUrl: account.profilePictureUrl || '',
+      });
     }
     setMode(ViewMode.VIEW)
   }
@@ -154,7 +170,7 @@ export default function AccountDetailsContent ({
     <div className={styles.content}>
       <div className={styles.header}>
         <Avatar
-          src={account.avatarUrl}
+          src={account.profilePictureUrl}
           alt={`${account.firstName} ${account.lastName}`}
           fallback={`${account.firstName[0]}${account.lastName[0]}`}
           size="lg"
@@ -185,7 +201,7 @@ export default function AccountDetailsContent ({
           <div className={styles.field}>
             <span className={styles.label}>Profile Picture URL</span>
             <p className={styles.value}>
-              {account.avatarUrl || 'Not provided'}
+              {account.profilePictureUrl || 'Not provided'}
             </p>
           </div>
 
@@ -234,48 +250,57 @@ export default function AccountDetailsContent ({
         </div>
       ) : (
         <form
-          onSubmit={(e) => {
-            e.preventDefault()
-            e.stopPropagation()
-            form.handleSubmit()
-          }}
+          onSubmit={handleSubmit(onSubmit)}
           className={styles.editMode}
         >
           <div className={styles.formGrid}>
             <FormField
-              form={form}
+              register={register}
+              errors={errors}
               name="firstName"
               label="First Name"
               placeholder="Enter first name"
-              validator={accountValidators.firstName}
               required
               disabled={isPending}
+              validation={{
+                validate: (value) => value.trim() ? true : 'First name is required',
+              }}
             />
 
             <FormField
-              form={form}
+              register={register}
+              errors={errors}
               name="lastName"
               label="Last Name"
               placeholder="Enter last name"
-              validator={accountValidators.lastName}
               required
               disabled={isPending}
+              validation={{
+                validate: (value) => value.trim() ? true : 'Last name is required',
+              }}
             />
           </div>
 
           <FormField
-            form={form}
+            register={register}
+            errors={errors}
             name="email"
             label="Email"
             type="email"
             placeholder="Enter email address"
-            validator={accountValidators.email}
             required
             disabled={isPending}
+            validation={{
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: 'Please enter a valid email address',
+              },
+            }}
           />
 
           <FormField
-            form={form}
+            register={register}
+            errors={errors}
             name="profilePictureUrl"
             label="Profile Picture URL"
             placeholder="Enter profile picture URL (optional)"
@@ -293,20 +318,14 @@ export default function AccountDetailsContent ({
             >
               Cancel
             </Button>
-            <form.Subscribe
-              selector={(state) => [state.canSubmit, state.isSubmitting]}
+            <Button
+              type="submit"
+              variant="primary"
+              size="sm"
+              disabled={!isValid || isPending}
             >
-              {([canSubmit]) => (
-                <Button
-                  type="submit"
-                  variant="primary"
-                  size="sm"
-                  disabled={!canSubmit || isPending}
-                >
-                  {isPending ? 'Saving...' : 'Save Changes'}
-                </Button>
-              )}
-            </form.Subscribe>
+              {isPending ? 'Saving...' : 'Save Changes'}
+            </Button>
           </div>
         </form>
       )}

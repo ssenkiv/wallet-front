@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="16fbe63f-06dc-44e3-9f6b-d6029698d51d" name="Changes" comment="Changed Tanstack Form to react-hook-form" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript JSX File" />
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="account-layout" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ssenkiv&quot;
+  }
+}</component>
+  <component name="GitRewordedCommitMessages">
+    <option name="commitMessagesMapping">
+      <RewordedCommitMessageMapping>
+        <option name="originalMessage" value="Add account infrastructure implementation.&#10;1. CRUD account logic and hooks.&#10;2. View model for account entity.&#10;3. Mock Repository(operational without foreign connections)." />
+        <option name="rewordedMessage" value="Add account infrastructure implementation.&#10;1. CRUD account logic and hooks.&#10;2. View model for account entity.&#10;3. Mock Repository(operational without foreign connections)." />
+      </RewordedCommitMessageMapping>
+    </option>
+    <option name="currentCommit" value="1" />
+    <option name="onto" value="36ccc8a1aa05ea22b9fd325cd84f6271189f79c3" />
+  </component>
+  <component name="GithubDefaultAccount">
+    <option name="defaultAccountId" value="5ace8e66-e76b-4fa9-a344-0ea0e54d2cee" />
+  </component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;git@github.com:ssenkiv/wallet-front.git&quot;,
+    &quot;accountId&quot;: &quot;7e69d71d-547a-4e1e-b59a-f570eadd232d&quot;
+  }
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="QODANA_PROBLEMS_VIEW_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="353Qf3FqopZ6YUm49gF36GsyzfU" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "true",
+    "git-widget-placeholder": "feature/account-components",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "last_opened_file_path": "/Users/knownasgod/Documents/solo-project/bank/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.Next.js: server-side.executor": "Run",
+    "settings.editor.selected.configurable": "preferences.sourceCode.CSS",
+    "ts.external.directory.path": "/Applications/WebStorm.app/Contents/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="Push.Settings">
+    <force-push-targets>
+      <force-push-target remote-path="origin" branch="account-layout" />
+    </force-push-targets>
+  </component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+      <recent name="$PROJECT_DIR$/src/app" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/view-models/accounts" />
+      <recent name="$PROJECT_DIR$/src/modules/accounts/types" />
+      <recent name="$PROJECT_DIR$/src/sections/accounts/AvatarWithDetails" />
+      <recent name="$PROJECT_DIR$/src/sections/accounts/AccountDetails" />
+      <recent name="$PROJECT_DIR$/src/sections/accounts" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.Next.js: server-side">
+    <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
+    <configuration name="Next.js: server-side" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-js-predefined-d6986cc7102b-3aa1da707db6-JavaScript-WS-252.27397.92" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="16fbe63f-06dc-44e3-9f6b-d6029698d51d" name="Changes" comment="" />
+      <created>1762336374726</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1762336374726</updated>
+      <workItem from="1762336375948" duration="64446000" />
+      <workItem from="1762855941160" duration="12874000" />
+      <workItem from="1762879262004" duration="1772000" />
+      <workItem from="1762954069462" duration="971000" />
+      <workItem from="1763023807438" duration="7454000" />
+    </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <option name="closed" value="true" />
+      <created>1762336718670</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1762336718670</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Organized structure of the project to match hexagonal architecture. For the moment, implementation only referencing future structure. Some components and elements of project strucure already implemented. For now tostify and real api requests are missing.">
+      <option name="closed" value="true" />
+      <created>1762417895248</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1762417895248</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added layer of abstraction between the domain model and UI components.">
+      <option name="closed" value="true" />
+      <created>1762446327996</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1762446327996</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Added Tanstack Query. Implemented Account domain model.&#10;1. Account entity.&#10;2. AccountRepository.&#10;3. Account hooks.&#10;4. AccountMockRepository for dev purposes.">
+      <option name="closed" value="true" />
+      <created>1762532905190</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1762532905190</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added Tanstack Query. Implemented Account domain model.&#10;1. Account entity.&#10;2. AccountRepository.&#10;3. Account hooks.&#10;4. AccountMockRepository for dev purposes.">
+      <option name="closed" value="true" />
+      <created>1762533108738</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1762533108738</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Implemented Account Table UI.">
+      <option name="closed" value="true" />
+      <created>1762775949194</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1762775949194</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Implementation of Account infrastructure and UI story.">
+      <option name="closed" value="true" />
+      <created>1762877034589</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1762877034589</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add LocalStorage for proper CRUD working.">
+      <option name="closed" value="true" />
+      <created>1762878879977</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1762878879977</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Wallet infrastructure and UI implementation.">
+      <option name="closed" value="true" />
+      <created>1762880065487</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1762880065487</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Added separate AccountDetails page.">
+      <option name="closed" value="true" />
+      <created>1762881010309</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1762881010309</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Add account infrastructure implementation.&#10;1. CRUD account logic and hooks.&#10;2. View model for account entity.&#10;3. Mock Repository(operational without foreign connections).">
+      <option name="closed" value="true" />
+      <created>1763026002840</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1763026002840</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add common components.">
+      <option name="closed" value="true" />
+      <created>1763026127776</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1763026127776</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add Account specific components.">
+      <option name="closed" value="true" />
+      <created>1763026153217</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1763026153217</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Add account layout and pages">
+      <option name="closed" value="true" />
+      <created>1763026188743</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1763026188743</updated>
+    </task>
+    <task id="LOCAL-00015" summary="togo">
+      <option name="closed" value="true" />
+      <created>1763026197266</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1763026197266</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Changed Tanstack Form to react-hook-form">
+      <option name="closed" value="true" />
+      <created>1763028259492</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1763028259492</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <MESSAGE value="Organized structure of the project to match hexagonal architecture. For the moment, implementation only referencing future structure. Some components and elements of project strucure already implemented. For now tostify and real api requests are missing." />
+    <MESSAGE value="Added layer of abstraction between the domain model and UI components." />
+    <MESSAGE value="Added Tanstack Query. Implemented Account domain model.&#10;1. Account entity.&#10;2. AccountRepository.&#10;3. Account hooks.&#10;4. AccountMockRepository for dev purposes." />
+    <MESSAGE value="Implemented Account Table UI." />
+    <MESSAGE value="Implementation of Account infrastructure and UI story." />
+    <MESSAGE value="Add LocalStorage for proper CRUD working." />
+    <MESSAGE value="Wallet infrastructure and UI implementation." />
+    <MESSAGE value="Added separate AccountDetails page." />
+    <MESSAGE value="Implementation of Account infrastructure." />
+    <MESSAGE value="Add common components." />
+    <MESSAGE value="Add Account specific components." />
+    <MESSAGE value="Add account layout and pages" />
+    <MESSAGE value="togo" />
+    <MESSAGE value="Add account infrastructure implementation.&#10;1. CRUD account logic and hooks.&#10;2. View model for account entity.&#10;3. Mock Repository(operational without foreign connections)." />
+    <MESSAGE value="Changed Tanstack Form to react-hook-form" />
+    <option name="LAST_COMMIT_MESSAGE" value="Changed Tanstack Form to react-hook-form" />
+  </component>
+</project>
