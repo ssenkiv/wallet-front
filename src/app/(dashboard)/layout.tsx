@@ -13,10 +13,13 @@ export default function DashboardLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const {data, isLoading, error} = useAccountViewModel(1);
+  const { data, isLoading, error } = useAccountViewModel(1);
 
   if (isLoading) return <p>Loading user details...</p>;
-  if (error) return <p>Something went wrong 😢</p>;
+  if (error) {
+    console.error(error);
+    return <p>Something went wrong 😢</p>;
+  }
   if (!data) return <p>No user found.</p>;
 
   return (
@@ -25,20 +28,20 @@ export default function DashboardLayout({
         <div className={styles.logoContainer}>
           <Logo/>
         </div>
-        <Sidebar activeItem="overview" />
+        <Sidebar />
       </aside>
 
       <div className={styles.mainArea}>
         <Header
-          userName={data.fullName}
-          userEmail={data.email}
-          userAvatar={data.avatarUrl}
-          accountType="Premium"
+          user={{
+            name: data.fullName,
+            email: data.email,
+            avatar: data.avatarUrl,
+            accountType: "Premium"
+          }}
           notificationCount={2}
           onProfileClick={() => console.log('Profile clicked')}
           onSettingsClick={() => console.log('Settings clicked')}
-          onSecurityClick={() => console.log('Security clicked')}
-          onBillingClick={() => console.log('Billing clicked')}
           onLogoutClick={() => console.log('Logout clicked')}
         />
 
