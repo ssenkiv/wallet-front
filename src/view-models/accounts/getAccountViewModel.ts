@@ -1,7 +1,8 @@
 import { Account } from '@/modules/accounts/domain/Account';
 import { AccountViewModel } from './AccountViewModel';
 
-const DEFAULT_AVATAR = '/will-add-default-later.png';
+const DEFAULT_AVATAR = '/Shevchenko_Taras.jpg';
+
 
 export default function getAccountViewModel(account: Account): AccountViewModel {
   const fullName = `${account.firstName} ${account.lastName}`.trim();

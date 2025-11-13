@@ -17,6 +17,7 @@ export default function useUpdateAccount() {
         mutationFn: (accountUpdateRequest: AccountUpdateRequest): Promise<Account> => updateAccount(
             accountUpdateRequest),
         onSuccess: (account) => {
+          queryClient.invalidateQueries({queryKey: ['accounts']});
           queryClient.invalidateQueries({queryKey: ['account', account.id]});
         },
       },
