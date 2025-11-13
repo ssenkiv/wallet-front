@@ -1,45 +1,35 @@
 'use client';
 
-import { User, Settings, Shield, LogOut, CreditCard } from 'lucide-react';
-import styles from './AccountDetails.module.css';
-import Avatar from '@/components/Avatar/Avatar';
+import { LogOut, Settings, User } from 'lucide-react'
+import styles from './AccountDetails.module.css'
+import Avatar from '@/components/Avatar/Avatar'
+import { UserProfile } from '@/view-models/accounts/UserViewModel'
 
 export interface AccountDetailsProps {
-  userName: string;
-  userEmail: string;
-  userAvatar?: string;
-  accountType: string;
+  user: UserProfile;
   onProfileClick?: () => void;
   onSettingsClick?: () => void;
-  onSecurityClick?: () => void;
-  onBillingClick?: () => void;
   onLogoutClick?: () => void;
 }
 
 export default function AccountDetails({
-  userName,
-  userEmail,
-  userAvatar,
-  accountType,
+  user,
   onProfileClick,
   onSettingsClick,
-  onSecurityClick,
-  onBillingClick,
   onLogoutClick,
 }: Readonly<AccountDetailsProps>) {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
         <Avatar
-          src={userAvatar}
-          alt={userName}
+          src={user.avatar}
+          alt={user.name}
           size="lg"
-          fallback={userName.charAt(0)}
+          fallback={user.name.charAt(0)}
         />
         <div className={styles.userInfo}>
-          <h3 className={styles.userName}>{userName}</h3>
-          <p className={styles.userEmail}>{userEmail}</p>
-          <span className={styles.accountBadge}>{accountType} Account</span>
+          <h3 className={styles.userName}>{user.name}</h3>
+          <p className={styles.userEmail}>{user.email}</p>
         </div>
       </div>
 
@@ -62,24 +52,6 @@ export default function AccountDetails({
         >
           <Settings size={20} className={styles.menuIcon} />
           <span>Account Settings</span>
-        </button>
-
-        <button
-          className={styles.menuItem}
-          onClick={onSecurityClick}
-          aria-label="Security settings"
-        >
-          <Shield size={20} className={styles.menuIcon} />
-          <span>Security</span>
-        </button>
-
-        <button
-          className={styles.menuItem}
-          onClick={onBillingClick}
-          aria-label="Billing & payments"
-        >
-          <CreditCard size={20} className={styles.menuIcon} />
-          <span>Billing & Payments</span>
         </button>
       </nav>
 
