@@ -2,7 +2,7 @@ import { HTMLAttributes, ReactNode } from 'react';
 import styles from './Badge.module.css';
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
-  children: ReactNode;
+  children?: ReactNode;
   variant?: 'dot' | 'number';
   position?: 'top-right' | 'top-left' | 'bottom-right' | 'bottom-left';
   show?: boolean;

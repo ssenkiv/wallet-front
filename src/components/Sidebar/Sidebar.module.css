@@ -32,7 +32,7 @@
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-medium);
   cursor: pointer;
-  border-radius: var(--border-radius-lg);
+  border-radius: 100px;
   transition: all var(--transition-base);
   text-align: left;
   width: 100%;
@@ -43,8 +43,9 @@
 }
 
 .navItem.active {
-  background-color: var(--color-neutral-light);
+  background-color: #E8E8E8;
   color: var(--color-secondary);
+  font-weight: var(--font-weight-semibold);
 }
 
 .icon {
