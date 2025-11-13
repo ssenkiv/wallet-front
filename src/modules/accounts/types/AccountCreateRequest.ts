@@ -1,0 +1,9 @@
+export interface AccountCreateRequest {
+  firstName: string;
+  lastName: string;
+  email: string;
+  password: string;
+  profilePictureUrl?: string;
+}
+
+
