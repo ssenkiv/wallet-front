@@ -13,7 +13,6 @@ export default function useUpdateAccount() {
   const queryClient = useQueryClient();
 
   return useMutation({
-        mutationKey: ['updateAccount'],
         mutationFn: (accountUpdateRequest: AccountUpdateRequest): Promise<Account> => updateAccount(
             accountUpdateRequest),
         onSuccess: (account) => {

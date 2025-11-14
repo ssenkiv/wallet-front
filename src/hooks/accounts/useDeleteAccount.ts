@@ -9,7 +9,6 @@ const delAcc = deleteAccount(mockApiRepository);
 export default function useDeleteAccount() {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationKey: ['deleteAccount'],
     mutationFn: (id: number) => delAcc(id),
     onSuccess: (_, id) => {
       queryClient.removeQueries({ queryKey: ['account', id] });

@@ -14,7 +14,6 @@ export default function useCreateAccount() {
   const queryClient = useQueryClient();
 
   return useMutation({
-    mutationKey: ['createAccount'],
     mutationFn: (accountCreateRequest: AccountCreateRequest): Promise<Account> =>
       createAccountFn(accountCreateRequest),
     onSuccess: () => {

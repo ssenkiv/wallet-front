@@ -1,9 +1,7 @@
 'use client';
 
-import { Bell } from 'lucide-react'
 import SearchBar from '@/components/SearchBar/SearchBar'
 import AvatarWithDetails from '@/sections/accounts/AvatarWithDetails/AvatarWithDetails'
-import Badge from '@/components/Badge/Badge'
 import styles from './Header.module.css'
 import { UserProfile } from '@/view-models/accounts/UserViewModel'
 
@@ -21,10 +19,8 @@ export interface HeaderProps {
 
 export default function Header({
   user = { name: 'User', email: 'user@nerdypay.com', accountType: 'Basic' },
-  notificationCount = 0,
   language = 'EN',
   onSearch,
-  onNotificationClick,
   onProfileClick,
   onSettingsClick,
   onLogoutClick,
@@ -47,18 +43,6 @@ export default function Header({
         >
           {language}
         </button>
-
-        <button
-          className={styles.notificationButton}
-          onClick={onNotificationClick}
-          aria-label="Notifications"
-        >
-          <Bell size={20} />
-          {notificationCount > 0 && (
-              <Badge variant={'number'}>{notificationCount}</Badge>
-          )}
-        </button>
-
         <div className={styles.avatarWrapper}>
           <AvatarWithDetails
             user={user}

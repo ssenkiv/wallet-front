@@ -4,7 +4,7 @@ import { InputHTMLAttributes } from 'react';
 import { Search } from 'lucide-react';
 import styles from './SearchBar.module.css';
 
-export interface SearchBarProps extends Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> {}
+export type SearchBarProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'type'>
 
 export default function SearchBar({
   placeholder = 'Search...',

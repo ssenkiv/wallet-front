@@ -13,9 +13,10 @@ export default function Button({
   size = 'md',
   icon,
   children,
+  type,
+  onClick,
   className = '',
-  ...props
-}: Readonly<ButtonProps>) {
+}: ButtonProps) {
   const classes = [
     styles.button,
     styles[variant],
@@ -24,7 +25,7 @@ export default function Button({
   ].filter(Boolean).join(' ');
 
   return (
-    <button className={classes} {...props}>
+    <button className={classes} onClick={onClick} type={type}>
       {icon && <span className={styles.icon}>{icon}</span>}
       {children}
     </button>
