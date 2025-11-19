@@ -1,7 +1,7 @@
 'use client';
 
-import { InputHTMLAttributes, forwardRef } from 'react';
-import styles from './Input.module.css';
+import { forwardRef, InputHTMLAttributes } from 'react'
+import styles from './Input.module.css'
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
@@ -10,7 +10,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, error, helperText, className, required, ...props }, ref) => {
+  ({id, label, error, helperText, className, required, ...rest}, ref) => {
     const inputClasses = [
       styles.input,
       error && styles.inputError,
@@ -20,28 +20,24 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
     return (
       <div className={styles.wrapper}>
         {label && (
-          <label htmlFor={props.id} className={styles.label}>
+          <label htmlFor={id} className={styles.label}>
             {label}
             {required && <span className={styles.required}>*</span>}
           </label>
         )}
         <input
+          id={id}
           ref={ref}
           className={inputClasses}
-          required={required}
-          aria-invalid={error ? 'true' : 'false'}
-          aria-describedby={
-            error ? `${props.id}-error` : helperText ? `${props.id}-helper` : undefined
-          }
-          {...props}
+          {...rest}
         />
         {error && (
-          <span id={`${props.id}-error`} className={styles.error} role="alert">
+          <span className={styles.error}>
             {error}
           </span>
         )}
         {helperText && !error && (
-          <span id={`${props.id}-helper`} className={styles.helperText}>
+          <span className={styles.helperText}>
             {helperText}
           </span>
         )}

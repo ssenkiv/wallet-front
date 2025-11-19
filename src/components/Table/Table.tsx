@@ -1,6 +1,4 @@
-'use client';
-
-import { useState } from 'react';
+import { useState } from 'react'
 import {
   flexRender,
   getCoreRowModel,
@@ -8,21 +6,25 @@ import {
   ColumnDef,
   getPaginationRowModel,
   PaginationState,
-} from '@tanstack/react-table';
-import { ChevronLeft, ChevronRight, ChevronsLeft, ChevronsRight } from 'lucide-react';
-import styles from './Table.module.css';
+} from '@tanstack/react-table'
+import {
+  ChevronLeft,
+  ChevronRight,
+  ChevronsLeft,
+  ChevronsRight,
+} from 'lucide-react'
+import styles from './Table.module.css'
 
 export interface TableProps<TData> {
-  data: TData[];
-  columns: ColumnDef<TData>[];
-  variant?: 'default' | 'striped' | 'bordered';
-  size?: 'sm' | 'md' | 'lg';
-  hoverable?: boolean;
-  emptyMessage?: string;
-  enablePagination?: boolean;
-  initialPageSize?: number;
-  pageSizeOptions?: number[];
-  onRowClick?: (data: TData) => void;
+  data: TData[]
+  columns: ColumnDef<TData>[]
+  variant?: 'default' | 'striped' | 'bordered'
+  size?: 'sm' | 'md' | 'lg'
+  hoverable?: boolean
+  emptyMessage?: string
+  enablePagination?: boolean
+  initialPageNumber?: number
+  onRowClick?: (data: TData) => void
 }
 
 export default function Table<TData>({
@@ -33,31 +35,34 @@ export default function Table<TData>({
   hoverable = true,
   emptyMessage = 'No data available',
   enablePagination = false,
-  initialPageSize = 5,
-  pageSizeOptions = [5, 10, 20, 50],
+  initialPageNumber = 1,
   onRowClick,
 }: Readonly<TableProps<TData>>) {
   const [pagination, setPagination] = useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: initialPageSize,
-  });
+    pageIndex: initialPageNumber - 1,
+    pageSize: 10,
+  })
 
   const table = useReactTable({
     data,
     columns,
     getCoreRowModel: getCoreRowModel(),
-    getPaginationRowModel: enablePagination ? getPaginationRowModel() : undefined,
+    getPaginationRowModel: enablePagination
+      ? getPaginationRowModel()
+      : undefined,
     onPaginationChange: enablePagination ? setPagination : undefined,
     state: enablePagination ? { pagination } : undefined,
-  });
+    autoResetPageIndex: false,
+  })
 
   const tableClasses = [
     styles.table,
     styles[variant],
     styles[`size-${size}`],
     hoverable && styles.hoverable,
-  ].filter(Boolean).join(' ');
-
+  ]
+    .filter(Boolean)
+    .join(' ')
   return (
     <div className={styles.wrapper}>
       <div className={styles.tableContainer}>
@@ -70,7 +75,8 @@ export default function Table<TData>({
                     key={header.id}
                     className={styles.th}
                     style={{
-                      width: header.getSize() === 150 ? undefined : header.getSize(),
+                      width:
+                        header.getSize() === 150 ? undefined : header.getSize(),
                     }}
                   >
                     {header.isPlaceholder
@@ -87,10 +93,7 @@ export default function Table<TData>({
           <tbody className={styles.tbody}>
             {table.getRowModel().rows.length === 0 ? (
               <tr>
-                <td
-                  colSpan={columns.length}
-                  className={styles.emptyState}
-                >
+                <td colSpan={columns.length} className={styles.emptyState}>
                   {emptyMessage}
                 </td>
               </tr>
@@ -104,7 +107,10 @@ export default function Table<TData>({
                 >
                   {row.getVisibleCells().map((cell) => (
                     <td key={cell.id} className={styles.td}>
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      {flexRender(
+                        cell.column.columnDef.cell,
+                        cell.getContext()
+                      )}
                     </td>
                   ))}
                 </tr>
@@ -119,7 +125,10 @@ export default function Table<TData>({
           <div className={styles.paginationInfo}>
             <span className={styles.paginationText}>
               Showing {pagination.pageIndex * pagination.pageSize + 1} to{' '}
-              {Math.min((pagination.pageIndex + 1) * pagination.pageSize, table.getRowCount())}{' '}
+              {Math.min(
+                (pagination.pageIndex + 1) * pagination.pageSize,
+                table.getRowCount()
+              )}{' '}
               of {table.getRowCount()} entries
             </span>
           </div>
@@ -173,22 +182,8 @@ export default function Table<TData>({
               <ChevronsRight size={18} />
             </button>
           </div>
-
-          <div className={styles.paginationPageSize}>
-            <select
-              className={styles.pageSizeSelect}
-              value={pagination.pageSize}
-              onChange={(e) => table.setPageSize(Number(e.target.value))}
-            >
-              {pageSizeOptions.map((pageSize) => (
-                <option key={pageSize} value={pageSize}>
-                  {pageSize} per page
-                </option>
-              ))}
-            </select>
-          </div>
         </div>
       )}
     </div>
-  );
+  )
 }

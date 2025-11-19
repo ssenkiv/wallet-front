@@ -53,6 +53,9 @@
   padding: var(--spacing-sm);
   min-width: 40px;
   min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .sm {
@@ -67,10 +70,4 @@
 .lg {
   font-size: var(--font-size-lg);
   padding: var(--spacing-lg) var(--spacing-xl);
-}
-
-.icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
