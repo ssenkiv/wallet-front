@@ -14,7 +14,6 @@ export default function Card({
   padding = 'md',
   children,
   className = '',
-  ...props
 }: Readonly<CardProps>) {
   const classes = [
     styles.card,
@@ -25,7 +24,7 @@ export default function Card({
   ].filter(Boolean).join(' ');
 
   return (
-    <div className={classes} {...props}>
+    <div className={classes}>
       {children}
     </div>
   );

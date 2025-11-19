@@ -2,7 +2,7 @@ import { ButtonHTMLAttributes, ReactNode } from 'react';
 import styles from './Button.module.css';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'icon';
+  variant?: 'primary' | 'secondary' | 'icon' | 'danger';
   size?: 'sm' | 'md' | 'lg';
   icon?: ReactNode;
   children?: ReactNode;
@@ -13,9 +13,10 @@ export default function Button({
   size = 'md',
   icon,
   children,
+  type,
+  onClick,
   className = '',
-  ...props
-}: Readonly<ButtonProps>) {
+}: ButtonProps) {
   const classes = [
     styles.button,
     styles[variant],
@@ -24,7 +25,7 @@ export default function Button({
   ].filter(Boolean).join(' ');
 
   return (
-    <button className={classes} {...props}>
+    <button className={classes} onClick={onClick} type={type}>
       {icon && <span className={styles.icon}>{icon}</span>}
       {children}
     </button>
