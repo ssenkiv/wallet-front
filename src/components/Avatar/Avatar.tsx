@@ -16,7 +16,6 @@ export default function Avatar({
   size = 'md',
   fallback,
   className = '',
-  ...props
 }: Readonly<AvatarProps>) {
   const classes = [
     styles.avatar,
@@ -25,7 +24,7 @@ export default function Avatar({
   ].filter(Boolean).join(' ');
 
   return (
-    <div className={classes} {...props}>
+    <div className={classes}>
       {src ? (
         <Image src={src} alt={alt} className={styles.image} width={20} height={20} />
       ) : fallback ? (
