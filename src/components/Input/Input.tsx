@@ -10,7 +10,7 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
 }
 
 const Input = forwardRef<HTMLInputElement, InputProps>(
-  ({id, label, error, helperText, className, required}, ref) => {
+  ({id, label, error, helperText, className, required, ...rest}, ref) => {
     const inputClasses = [
       styles.input,
       error && styles.inputError,
@@ -26,21 +26,18 @@ const Input = forwardRef<HTMLInputElement, InputProps>(
           </label>
         )}
         <input
+          id={id}
           ref={ref}
           className={inputClasses}
-          required={required}
-          aria-invalid={error ? 'true' : 'false'}
-          aria-describedby={
-            error ? `${id}-error` : helperText ? `${id}-helper` : undefined
-          }
+          {...rest}
         />
         {error && (
-          <span id={`${id}-error`} className={styles.error} role="alert">
+          <span className={styles.error}>
             {error}
           </span>
         )}
         {helperText && !error && (
-          <span id={`${id}-helper`} className={styles.helperText}>
+          <span className={styles.helperText}>
             {helperText}
           </span>
         )}

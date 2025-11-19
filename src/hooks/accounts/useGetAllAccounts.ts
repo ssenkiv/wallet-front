@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import getAllAccounts from '@/modules/accounts/application/getAll';
-import { mockApiRepository } from '@/modules/accounts/infra/MockAccountRepository';
+import { mockApiRepository } from '@/modules/accounts/infra/mockAccountRepository';
 
 const getAll = getAllAccounts(mockApiRepository);
 

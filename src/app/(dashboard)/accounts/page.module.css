@@ -75,6 +75,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
+  gap: var(--spacing-sm);
 }
 
 .errorState,
@@ -123,4 +124,13 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.linkParent {
+  position: relative;
+}
+.link {
+  position: absolute;
+  width: 200px;
+  z-index: 999;
 }

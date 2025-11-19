@@ -4,11 +4,8 @@ import { LoginResponse } from '@/modules/accounts/types/LoginResponse'
 
 const STORAGE_KEY = 'mock_accounts'
 const ID_COUNTER_KEY = 'mock_account_id_counter'
-const NETWORK_DELAY = 300
 
-const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms))
-
-function loadAccounts (): Account[] {
+function loadAccounts(): Account[] {
   if (typeof globalThis.window === 'undefined') return []
 
   const stored = localStorage.getItem(STORAGE_KEY)
@@ -22,12 +19,12 @@ function loadAccounts (): Account[] {
   }))
 }
 
-function saveAccounts (accounts: Account[]): void {
+function saveAccounts(accounts: Account[]): void {
   if (typeof globalThis.window === 'undefined') return
   localStorage.setItem(STORAGE_KEY, JSON.stringify(accounts))
 }
 
-function getNextId (): number {
+function getNextId(): number {
   if (typeof globalThis.window === 'undefined') return Date.now()
 
   const stored = localStorage.getItem(ID_COUNTER_KEY)
@@ -45,7 +42,7 @@ function createMockAccountRepository(): AccountRepository {
     deleteAccount,
     createAccount,
     login,
-  };
+  }
 }
 
 const initialMockAccounts: Account[] = [
@@ -142,7 +139,7 @@ const initialMockAccounts: Account[] = [
   },
 ]
 
-function initializeStorage (): void {
+function initializeStorage(): void {
   if (typeof globalThis.window === 'undefined') return
 
   const stored = localStorage.getItem(STORAGE_KEY)
@@ -156,12 +153,10 @@ if (typeof globalThis.window !== 'undefined') {
 }
 
 async function getAllAccounts() {
-  await delay(NETWORK_DELAY)
   return loadAccounts()
 }
 
 async function getAccountById(id: number) {
-  await delay(NETWORK_DELAY)
   const accounts = loadAccounts()
   const account = accounts.find((acc) => acc.id === id)
 
@@ -173,12 +168,11 @@ async function getAccountById(id: number) {
 }
 
 async function updateAccount(id: number, data: Partial<Account>) {
-  await delay(NETWORK_DELAY)
   const accounts = loadAccounts()
   const foundAccount = accounts.find((acc) => acc.id === id)
 
   if (!foundAccount) {
-    throw new Error('Account not found');
+    throw new Error('Account not found')
   }
 
   const updatedAccount = {
@@ -189,7 +183,7 @@ async function updateAccount(id: number, data: Partial<Account>) {
   }
 
   const updatedAccounts = accounts.map((acc) =>
-    acc.id === id ? updatedAccount : acc,
+    acc.id === id ? updatedAccount : acc
   )
 
   saveAccounts(updatedAccounts)
@@ -197,7 +191,6 @@ async function updateAccount(id: number, data: Partial<Account>) {
 }
 
 async function deleteAccount(id: number) {
-  await delay(NETWORK_DELAY)
   const accounts = loadAccounts()
   const index = accounts.findIndex((acc) => acc.id === id)
 
@@ -210,7 +203,6 @@ async function deleteAccount(id: number) {
 }
 
 async function createAccount(account: Partial<Account>) {
-  await delay(NETWORK_DELAY)
   const accounts = loadAccounts()
 
   const newAccount: Account = {
@@ -218,18 +210,18 @@ async function createAccount(account: Partial<Account>) {
     id: getNextId(),
     createdAt: new Date(),
     updateAt: new Date(),
-  } as Account;
+  } as Account
 
   const updatedAccounts = [...accounts, newAccount]
   saveAccounts(updatedAccounts)
-  return newAccount;
+  return newAccount
 }
 
 async function login(email: string, password: string) {
-  await delay(NETWORK_DELAY)
   const accounts = loadAccounts()
   const account = accounts.find(
-    (acc) => acc.email === email && acc.password === password)
+    (acc) => acc.email === email && acc.password === password
+  )
 
   if (!account) {
     throw new Error('Invalid credentials')
@@ -241,4 +233,4 @@ async function login(email: string, password: string) {
   } as LoginResponse
 }
 
-export const mockApiRepository = createMockAccountRepository();
+export const mockApiRepository = createMockAccountRepository()

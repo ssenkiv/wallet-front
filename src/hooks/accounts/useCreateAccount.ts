@@ -1,23 +1,20 @@
-import {
-  mockApiRepository,
-} from '@/modules/accounts/infra/MockAccountRepository';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { Account } from '@/modules/accounts/domain/Account';
-import createAccount from '@/modules/accounts/application/create';
-import {
-  AccountCreateRequest
-} from '@/modules/accounts/types/AccountCreateRequest';
+import { mockApiRepository } from '@/modules/accounts/infra/mockAccountRepository'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { Account } from '@/modules/accounts/domain/Account'
+import createAccount from '@/modules/accounts/application/create'
+import { AccountCreateRequest } from '@/modules/accounts/types/AccountCreateRequest'
 
-const createAccountFn = createAccount(mockApiRepository);
+const createAccountFn = createAccount(mockApiRepository)
 
 export default function useCreateAccount() {
-  const queryClient = useQueryClient();
+  const queryClient = useQueryClient()
 
   return useMutation({
-    mutationFn: (accountCreateRequest: AccountCreateRequest): Promise<Account> =>
-      createAccountFn(accountCreateRequest),
+    mutationFn: (
+      accountCreateRequest: AccountCreateRequest
+    ): Promise<Account> => createAccountFn(accountCreateRequest),
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['accounts'] });
+      queryClient.invalidateQueries({ queryKey: ['accounts'] })
     },
-  });
+  })
 }
