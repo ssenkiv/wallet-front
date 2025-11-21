@@ -9,13 +9,13 @@ import { Plus, Trash2 } from 'lucide-react'
 import Link from 'next/link'
 import useDeleteWallet from '@/hooks/wallets/useDeleteWallet'
 import { useRouter } from 'next/navigation'
-import { Wallet } from '@/modules/wallets/domain/wallet'
-import { useGetAllWallets } from '@/hooks/wallets/useGetAllWallets'
+import useWalletsViewModel from '@/hooks/wallets/view/useWalletsViewModel'
+import { WalletViewModel } from '@/view-models/wallets/WalletViewModel'
 
 export default function WalletsPage () {
   const router = useRouter()
   const { mutate } = useDeleteWallet()
-  const { data, isLoading, isError } = useGetAllWallets()
+  const { data, isLoading, isError } = useWalletsViewModel()
 
   const handleRowClick = (walletId: number) => {
     router.push(`/wallets/${walletId}`)
@@ -26,7 +26,7 @@ export default function WalletsPage () {
     mutate(walletId)
   }
 
-  const columns: ColumnDef<Wallet>[] = [
+  const columns: ColumnDef<WalletViewModel>[] = [
     {
       accessorKey: 'id',
       header: 'ID',
@@ -40,28 +40,25 @@ export default function WalletsPage () {
       header: 'Account ID',
       size: 120,
       cell: ({ row }) => (
-        <span className={styles.accountIdCell}>#{row.original.accountId}</span>
+        <Link
+          href={`/accounts/${row.original.accountId}`}
+          className={styles.accountIdLink}
+          onClick={(e) => e.stopPropagation()}
+        >
+          #{row.original.accountId}
+        </Link>
       ),
     },
     {
-      accessorKey: 'amount',
+      accessorKey: 'formattedAmount',
       header: 'Amount',
       size: 20,
       cell: ({ row }) => (
         <span className={styles.amountCell}>
-          {row.original.amount}
+          {row.original.formattedAmount}
         </span>
       ),
     },
-    {
-      accessorKey: 'currency',
-      header: 'Currency',
-      size: 20,
-      cell: ({ row }) => (
-        <span className={styles.currencyCell}>{row.original.currency}</span>
-      ),
-    },
-
     {
       id: 'actions',
       header: 'Actions',

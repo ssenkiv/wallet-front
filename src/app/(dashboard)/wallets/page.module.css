@@ -62,6 +62,17 @@
   font-size: var(--font-size-sm);
 }
 
+.accountIdLink {
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.accountIdLink:hover {
+  text-decoration: underline;
+}
+
 .actionsCell {
   display: flex;
   align-items: center;

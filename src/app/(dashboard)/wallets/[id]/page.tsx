@@ -15,6 +15,7 @@ import styles from './page.module.css'
 import { useGetWallet } from '@/hooks/wallets/useGetWallet'
 import useDeleteWallet from '@/hooks/wallets/useDeleteWallet'
 import Link from 'next/link'
+import getWalletViewModel from '@/view-models/wallets/getWalletViewModel'
 
 export default function WalletDetailsPage() {
   const router = useRouter()
@@ -71,6 +72,8 @@ export default function WalletDetailsPage() {
     )
   }
 
+  const viewModel = getWalletViewModel(data)
+
   return (
     <section className={styles.content}>
       <Button
@@ -93,15 +96,7 @@ export default function WalletDetailsPage() {
             <CreditCard size={18} />
             <span>Wallet ID</span>
           </div>
-          <p className={styles.detailValue}>#{data.id}</p>
-        </div>
-
-        <div className={styles.detailItem}>
-          <div className={styles.detailLabel}>
-            <DollarSign size={18} />
-            <span>Currency</span>
-          </div>
-          <p className={styles.detailValue}>{data.currency}</p>
+          <p className={styles.detailValue}>#{viewModel.id}</p>
         </div>
 
         <div className={styles.detailItem}>
@@ -109,7 +104,7 @@ export default function WalletDetailsPage() {
             <DollarSign size={18} />
             <span>Amount</span>
           </div>
-          <p className={styles.detailValue}>{data.amount}</p>
+          <p className={styles.detailValue}>{viewModel.formattedAmount}</p>
         </div>
 
         <div className={styles.detailItem}>
@@ -117,7 +112,11 @@ export default function WalletDetailsPage() {
             <User size={18} />
             <span>Account ID</span>
           </div>
-          <p className={styles.detailValue}>#{data.accountId}</p>
+          <p className={styles.detailValue}>
+            <Link href={`/accounts/${viewModel.accountId}`} className={styles.accountLink}>
+              #{viewModel.accountId}
+            </Link>
+          </p>
           <div className={styles.actionButtons}>
             <Button
               type="button"

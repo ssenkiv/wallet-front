@@ -75,6 +75,18 @@
   font-weight: var(--font-weight-medium);
 }
 
+.accountLink {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.accountLink:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
 @media (max-width: 768px) {
   .container {
     padding: var(--spacing-md);
