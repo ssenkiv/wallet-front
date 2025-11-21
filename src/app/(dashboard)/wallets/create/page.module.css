@@ -18,9 +18,8 @@
 }
 
 .label {
-  font-size: var(--font-size-sm);
-  font-weight: var(--font-weight-medium);
-  color: var(--color-secondary);
+  font-size: 18px;
+  font-weight: bold;
 }
 
 .required {
@@ -28,20 +27,9 @@
 }
 
 .select {
-  padding: 10px 12px;
-  border: 1px solid var(--color-neutral-light);
-  border-radius: 6px;
-  font-size: var(--font-size-base);
-  color: var(--color-secondary);
-  background-color: var(--color-white);
-  transition: all 0.2s ease;
+  height: 30px;
 }
 
-.select:focus {
-  outline: none;
-  border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(var(--color-primary-rgb), 0.1);
-}
 
 .error {
   font-size: var(--font-size-xs);
