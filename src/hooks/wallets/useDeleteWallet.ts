@@ -9,8 +9,8 @@ export default function useDeleteWallet () {
   return useMutation({
     mutationFn: (id: number) => deleteFn(id),
     onSuccess: (_, id) => {
-      queryClient.removeQueries({ queryKey: ['account', id] })
-      queryClient.invalidateQueries({ queryKey: ['accounts'] })
+      queryClient.removeQueries({ queryKey: ['wallet', id] })
+      queryClient.invalidateQueries({ queryKey: ['wallets'] })
     },
   })
 }
