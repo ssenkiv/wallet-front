@@ -1,6 +1,7 @@
 import { WalletRepository } from '@/modules/wallets/domain/walletRepository'
 import { Wallet } from '@/modules/wallets/domain/wallet'
 import { CreateWalletRequest } from '@/modules/wallets/types/createWalletRequest'
+import UpdateWalletRequest from '@/modules/wallets/types/updateWalletRequest'
 
 const initialMockWallets: Wallet[] = [
   {
@@ -112,6 +113,7 @@ function createMockWalletRepository (): WalletRepository {
     getWalletById,
     createWallet,
     deleteWallet,
+    updateWallet,
   }
 }
 
@@ -148,6 +150,19 @@ async function deleteWallet (id: number): Promise<void> {
   }
   saveWallets(wallets.filter(acc => acc.id !== id))
 
+}
+
+async function updateWallet (updateWalletCommand: UpdateWalletRequest): Promise<Wallet> {
+  const wallets = loadWallets()
+  const walletToUpdate = wallets.find(wallet => wallet.id === updateWalletCommand.walletId)
+  if (!walletToUpdate) {
+    throw new Error(`Wallet with such id ${updateWalletCommand.walletId} not found`)
+  }
+  if (updateWalletCommand.amount) {
+    walletToUpdate.amount = updateWalletCommand.amount
+  }
+  saveWallets(wallets)
+  return walletToUpdate
 }
 
 export const mockWalletRepository = createMockWalletRepository()
