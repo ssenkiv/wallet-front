@@ -8,10 +8,21 @@ import { CreateWalletRequest } from '@/modules/wallets/types/createWalletRequest
 import Card from '@/components/Card/Card'
 import FormInput from '@/components/FormInput/FormInput'
 import Button from '@/components/Button/Button'
+import Select, { SelectChangeEvent } from '@mui/material/Select'
+import MenuItem from '@mui/material/MenuItem'
+import { useState } from 'react'
 
 export default function CreateWalletPage() {
   const { mutate } = useCreateWallet()
   const router = useRouter()
+  const [currencyV, setCurrencyV] = useState('')
+  const handleCurrencyChange = (event: SelectChangeEvent<typeof currencyV>) => {
+    const {
+      target: { value },
+    } = event
+    console.log(value)
+    setCurrencyV(value ?? 'Random')
+  }
   const {
     register,
     handleSubmit,
@@ -20,7 +31,6 @@ export default function CreateWalletPage() {
 
   const onHandle = (data: CreateWalletRequest) => {
     if (isDirty) {
-      console.log('Start wallet creation')
       mutate(data)
       router.push('/wallets')
     }
@@ -31,7 +41,7 @@ export default function CreateWalletPage() {
       <h1>Create Wallet</h1>
       <form className={styles.form} onSubmit={handleSubmit(onHandle)}>
         <FormInput
-          type="number"
+          type="text"
           label="Account ID"
           required={true}
           {...register('accountId', {
@@ -45,19 +55,19 @@ export default function CreateWalletPage() {
           error={errors.accountId?.message}
         />
         <div className={styles.formGroup}>
-          <label htmlFor="currency" className={styles.label}>
-            Currency <span className={styles.required}>*</span>
-          </label>
-          <select
+          <label htmlFor={'currency'} className={styles.label}>Currency<span>*</span></label>
+          <Select
             id="currency"
+            value={currencyV}
+            sx={{ borderRadius: '20px' }}
             className={styles.select}
-            {...register('currency', { required: true })}
+            {...register('currency', { required: true, onChange: handleCurrencyChange })}
           >
-            <option value="">Select currency</option>
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="UAH">UAH</option>
-          </select>
+            <MenuItem value={'USD'}>USD</MenuItem>
+            <MenuItem value={'EUR'}>EUR</MenuItem>
+            <MenuItem value={'UAH'}>UAH</MenuItem>
+
+          </Select>
           {errors.currency && (
             <span className={styles.error}>Currency is required</span>
           )}
