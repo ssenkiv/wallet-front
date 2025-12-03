@@ -1,7 +1,8 @@
 import { Currency } from '@/modules/wallets/domain/currency'
 
 export default interface DepositCommand {
-  accountIdTo: number;
-  amount: number;
-  currency: Currency;
+  accountIdTo: number
+  amount: number
+  currency: Currency
+  description?: string
 }
