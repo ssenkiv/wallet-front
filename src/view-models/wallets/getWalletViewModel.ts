@@ -1,5 +1,5 @@
 import { Wallet } from '@/modules/wallets/domain/wallet'
-import { WalletViewModel } from './WalletViewModel'
+import { WalletViewModel } from './walletViewModel'
 
 const CURRENCY_SYMBOLS: Record<string, string> = {
   USD: '$',

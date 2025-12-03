@@ -10,7 +10,7 @@ import Link from 'next/link'
 import useDeleteWallet from '@/hooks/wallets/useDeleteWallet'
 import { useRouter } from 'next/navigation'
 import useWalletsViewModel from '@/hooks/wallets/view/useWalletsViewModel'
-import { WalletViewModel } from '@/view-models/wallets/WalletViewModel'
+import { WalletViewModel } from '@/view-models/wallets/walletViewModel'
 
 export default function WalletsPage () {
   const router = useRouter()

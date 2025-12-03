@@ -1,6 +1,6 @@
 import SearchBar from '@/components/SearchBar/SearchBar'
 import styles from './Header.module.css'
-import { UserProfile } from '@/view-models/accounts/UserViewModel'
+import { UserProfile } from '@/view-models/accounts/userViewModel'
 
 export interface HeaderProps {
   user?: UserProfile

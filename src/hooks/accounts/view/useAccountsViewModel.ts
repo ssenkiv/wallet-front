@@ -2,7 +2,7 @@ import useGetAllAccounts from '@/hooks/accounts/useGetAllAccounts';
 import {
   getAccountsViewModel
 } from '@/view-models/accounts/getAccountsViewModel';
-import { AccountViewModel } from '@/view-models/accounts/AccountViewModel';
+import { AccountViewModel } from '@/view-models/accounts/accountViewModel';
 
 export default function useAccountsViewModel() {
   const {data, isLoading, error} = useGetAllAccounts();
