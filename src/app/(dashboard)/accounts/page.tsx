@@ -3,7 +3,7 @@
 import { ColumnDef } from '@tanstack/react-table'
 import Avatar from '@/components/Avatar/Avatar'
 import useAccountsViewModel from '@/hooks/accounts/view/useAccountsViewModel'
-import { AccountViewModel } from '@/view-models/accounts/AccountViewModel'
+import { AccountViewModel } from '@/view-models/accounts/accountViewModel'
 import styles from './page.module.css'
 import Table from '@/components/Table/Table'
 import Card from '@/components/Card/Card'
