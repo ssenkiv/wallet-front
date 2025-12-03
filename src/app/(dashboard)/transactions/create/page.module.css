@@ -1,0 +1,79 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  min-width: 400px;
+  gap: 20px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.required {
+  color: var(--color-primary);
+}
+
+.select {
+  height: 30px;
+}
+
+.error {
+  font-size: var(--font-size-xs);
+  color: var(--color-primary);
+  margin-top: 4px;
+}
+
+.tabs {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  border-bottom: 1px solid var(--color-neutral-light);
+  padding-bottom: var(--spacing-sm);
+}
+
+.tab {
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-medium);
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s ease;
+  margin-bottom: -1px;
+}
+
+.tab:hover {
+  color: var(--color-primary);
+}
+
+.activeTab {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+@media (max-width: 768px) {
+  .formContainer {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .tabs {
+    flex-wrap: wrap;
+  }
+}

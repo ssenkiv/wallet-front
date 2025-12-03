@@ -3,7 +3,7 @@
 import { ReactNode } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { Home, Wallet } from 'lucide-react'
+import { Home, Wallet, ArrowLeftRight } from 'lucide-react'
 import styles from './Sidebar.module.css'
 
 interface NavItem {
@@ -16,7 +16,8 @@ interface NavItem {
 
 const topNavItems: NavItem[] = [
   { id: 'accounts', icon: <Home size={20}/>, label: 'Accounts', href: '/accounts' },
-  {id: 'wallets', icon: <Wallet size={20}/>, label: 'Wallets', href: '/wallets'}
+  { id: 'wallets', icon: <Wallet size={20}/>, label: 'Wallets', href: '/wallets' },
+  { id: 'transactions', icon: <ArrowLeftRight size={20}/>, label: 'Transactions', href: '/transactions' },
 ];
 
 export interface SidebarProps {
