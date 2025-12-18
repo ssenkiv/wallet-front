@@ -1,4 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { toast } from 'react-toastify'
 import withdraw from '@/modules/transactions/application/withdraw'
 import createTransactionRepository from '@/modules/transactions/infra/mockTransactionRepository'
 import WithdrawCommand from '@/modules/transactions/types/withdrawCommand'
@@ -14,6 +15,10 @@ export default function useWithdraw() {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['transactions'] })
       queryClient.invalidateQueries({ queryKey: ['wallets'] })
+      toast.success('Withdrawal completed successfully')
+    },
+    onError: () => {
+      toast.error('Failed to complete withdrawal')
     },
   })
 }

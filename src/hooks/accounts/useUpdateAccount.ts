@@ -3,6 +3,7 @@ import updateAccountById, {
 } from '@/modules/accounts/application/update'
 import { mockApiRepository } from '@/modules/accounts/infra/mockAccountRepository'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { toast } from 'react-toastify'
 import { Account } from '@/modules/accounts/domain/Account'
 
 const updateAccount = updateAccountById(mockApiRepository)
@@ -17,6 +18,10 @@ export default function useUpdateAccount() {
     onSuccess: (account) => {
       queryClient.invalidateQueries({ queryKey: ['accounts'] })
       queryClient.invalidateQueries({ queryKey: ['account', account.id] })
+      toast.success('Account updated successfully')
+    },
+    onError: () => {
+      toast.error('Failed to update account')
     },
   })
 }
