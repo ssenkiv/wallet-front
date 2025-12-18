@@ -1,8 +1,8 @@
 import { WalletRepository } from '@/modules/wallets/domain/walletRepository'
-import { CreateWalletRequest } from '@/modules/wallets/types/createWalletRequest'
+import { CreateWalletCommand } from '@/modules/wallets/types/createWalletCommand'
 
 export function create (walletRepository: WalletRepository) {
-  return async (createWalletRequest: CreateWalletRequest) => {
-    return walletRepository.createWallet(createWalletRequest)
+  return async (createWalletCommand: CreateWalletCommand) => {
+    return walletRepository.createWallet(createWalletCommand)
   }
 }

@@ -1,9 +1,11 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import withdraw from '@/modules/transactions/application/withdraw'
+import { withdraw } from '@/modules/transactions/application/withdraw'
 import createTransactionRepository from '@/modules/transactions/infra/mockTransactionRepository'
-import WithdrawCommand from '@/modules/transactions/types/withdrawCommand'
+import { createMockWalletRepository } from '@/modules/wallets/infra/mockWalletRepository'
+import { WithdrawCommand } from '@/modules/transactions/types/withdrawCommand'
 
-const transactionRepository = createTransactionRepository()
+const walletRepository = createMockWalletRepository()
+const transactionRepository = createTransactionRepository(walletRepository)
 const withdrawFn = withdraw(transactionRepository)
 
 export default function useWithdraw() {

@@ -1,5 +1,5 @@
-import { Account } from '@/modules/accounts/domain/Account';
-import { LoginResponse } from '@/modules/accounts/types/LoginResponse';
+import { Account } from '@/modules/accounts/domain/account';
+import { LoginResponse } from '@/modules/accounts/types/loginResponse';
 
 export interface AccountRepository {
   getAllAccounts: () => Promise<Account[]>;

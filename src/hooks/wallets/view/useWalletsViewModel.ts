@@ -1,9 +1,9 @@
 import { useGetAllWallets } from '@/hooks/wallets/useGetAllWallets'
 import { getWalletsViewModel } from '@/view-models/wallets/getWalletsViewModel'
-import { WalletViewModel } from '@/view-models/wallets/WalletViewModel'
+import { WalletViewModel } from '@/view-models/wallets/walletViewModel'
 
 export default function useWalletsViewModel() {
-  const { data, isLoading, isError } = useGetAllWallets()
+  const { data, isLoading, error } = useGetAllWallets()
 
   const viewModels: WalletViewModel[] =
     data === undefined ? [] : getWalletsViewModel(data)
@@ -11,6 +11,6 @@ export default function useWalletsViewModel() {
   return {
     data: viewModels,
     isLoading,
-    isError,
+    error,
   }
 }

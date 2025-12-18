@@ -1,9 +1,11 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import deposit from '@/modules/transactions/application/deposit'
+import { deposit } from '@/modules/transactions/application/deposit'
 import createTransactionRepository from '@/modules/transactions/infra/mockTransactionRepository'
-import DepositCommand from '@/modules/transactions/types/depositCommand'
+import { createMockWalletRepository } from '@/modules/wallets/infra/mockWalletRepository'
+import { DepositCommand } from '@/modules/transactions/types/depositCommand'
 
-const transactionRepository = createTransactionRepository()
+const walletRepository = createMockWalletRepository()
+const transactionRepository = createTransactionRepository(walletRepository)
 const depositFn = deposit(transactionRepository)
 
 export default function useDeposit() {

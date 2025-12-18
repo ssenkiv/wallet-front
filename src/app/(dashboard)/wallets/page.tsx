@@ -10,12 +10,12 @@ import Link from 'next/link'
 import useDeleteWallet from '@/hooks/wallets/useDeleteWallet'
 import { useRouter } from 'next/navigation'
 import useWalletsViewModel from '@/hooks/wallets/view/useWalletsViewModel'
-import { WalletViewModel } from '@/view-models/wallets/WalletViewModel'
+import { WalletViewModel } from '@/view-models/wallets/walletViewModel'
 
 export default function WalletsPage () {
   const router = useRouter()
   const { mutate } = useDeleteWallet()
-  const { data, isLoading, isError } = useWalletsViewModel()
+  const { data, isLoading, error } = useWalletsViewModel()
 
   const handleRowClick = (walletId: number) => {
     router.push(`/wallets/${walletId}`)
@@ -78,7 +78,7 @@ export default function WalletsPage () {
     },
   ]
 
-  if (isError) {
+  if (error) {
     return (
       <Card>
         <div className={styles.errorState}>

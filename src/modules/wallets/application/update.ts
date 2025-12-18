@@ -1,6 +1,6 @@
 import { WalletRepository } from '@/modules/wallets/domain/walletRepository'
-import UpdateWalletRequest from '@/modules/wallets/types/updateWalletRequest'
+import { UpdateWalletCommand } from '@/modules/wallets/types/updateWalletCommand'
 
-export default function updateWallet(walletRepository: WalletRepository) {
-  return (updateWalletRequest: UpdateWalletRequest) => walletRepository.updateWallet(updateWalletRequest);
+export function updateWallet(walletRepository: WalletRepository) {
+  return (updateWalletCommand: UpdateWalletCommand) => walletRepository.updateWallet(updateWalletCommand);
 }

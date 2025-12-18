@@ -3,7 +3,7 @@ import updateAccountById, {
 } from '@/modules/accounts/application/update'
 import { mockApiRepository } from '@/modules/accounts/infra/mockAccountRepository'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
-import { Account } from '@/modules/accounts/domain/Account'
+import { Account } from '@/modules/accounts/domain/account'
 
 const updateAccount = updateAccountById(mockApiRepository)
 

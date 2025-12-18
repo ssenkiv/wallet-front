@@ -1,6 +1,6 @@
 import { Currency } from '@/modules/wallets/domain/currency'
 
-export interface CreateWalletRequest {
+export interface CreateWalletCommand {
   accountId: number,
   currency: Currency
 }

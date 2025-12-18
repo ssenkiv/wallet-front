@@ -1,11 +1,9 @@
-import TransactionRepository from '@/modules/transactions/domain/transactionRepository'
-import TransferCommand from '@/modules/transactions/types/transferCommand'
-import Transaction from '@/modules/transactions/domain/transaction'
-import DepositCommand from '@/modules/transactions/types/depositCommand'
-import WithdrawCommand from '@/modules/transactions/types/withdrawCommand'
-import { mockWalletRepository } from '@/modules/wallets/infra/mockWalletRepository'
-
-const walletRepository = mockWalletRepository
+import { TransactionRepository } from '@/modules/transactions/domain/transactionRepository'
+import { TransferCommand } from '@/modules/transactions/types/transferCommand'
+import { Transaction } from '@/modules/transactions/domain/transaction'
+import { DepositCommand } from '@/modules/transactions/types/depositCommand'
+import { WithdrawCommand } from '@/modules/transactions/types/withdrawCommand'
+import { WalletRepository } from '@/modules/wallets/domain/walletRepository'
 
 const STORAGE_KEY = 'mock_transactions'
 const ID_COUNTER_KEY = 'mock_transactions_counter'
@@ -86,17 +84,19 @@ if (typeof globalThis.window !== 'undefined') {
   initializeStorage()
 }
 
-export default function createTransactionRepository(): TransactionRepository {
+export default function createTransactionRepository(
+  walletRepository: WalletRepository
+): TransactionRepository {
   return {
-    transfer,
-    deposit,
-    withdraw,
+    transfer: (cmd: TransferCommand) => transfer(cmd, walletRepository),
+    deposit: (cmd: DepositCommand) => deposit(cmd, walletRepository),
+    withdraw: (cmd: WithdrawCommand) => withdraw(cmd, walletRepository),
     getById,
     getAll,
   }
 }
 
-async function deposit(depositCommand: DepositCommand): Promise<Transaction> {
+async function deposit(depositCommand: DepositCommand, walletRepository: WalletRepository): Promise<Transaction> {
   const allWallets = await walletRepository.getAllWallets()
   const walletToDeposit = allWallets.find(
     (wallet) => wallet.accountId === depositCommand.accountIdTo
@@ -134,7 +134,7 @@ async function deposit(depositCommand: DepositCommand): Promise<Transaction> {
   return transaction
 }
 
-async function withdraw(withdrawCommand: WithdrawCommand): Promise<Transaction> {
+async function withdraw(withdrawCommand: WithdrawCommand, walletRepository: WalletRepository): Promise<Transaction> {
   const allWallets = await walletRepository.getAllWallets()
   const walletToWithdraw = allWallets.find(
     (wallet) => wallet.accountId === withdrawCommand.accountIdFrom
@@ -178,7 +178,7 @@ async function withdraw(withdrawCommand: WithdrawCommand): Promise<Transaction> 
   return transaction
 }
 
-async function transfer(transferCommand: TransferCommand): Promise<Transaction> {
+async function transfer(transferCommand: TransferCommand, walletRepository: WalletRepository): Promise<Transaction> {
   const allWallets = await walletRepository.getAllWallets()
   const walletFrom = allWallets.find(
     (wallet) => wallet.accountId === transferCommand.accountIdFrom

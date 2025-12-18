@@ -1,6 +1,6 @@
-import { AccountRepository } from '@/modules/accounts/domain/AccountRepository'
-import { Account } from '@/modules/accounts/domain/Account'
-import { LoginResponse } from '@/modules/accounts/types/LoginResponse'
+import { AccountRepository } from '@/modules/accounts/domain/accountRepository'
+import { Account } from '@/modules/accounts/domain/account'
+import { LoginResponse } from '@/modules/accounts/types/loginResponse'
 
 const STORAGE_KEY = 'mock_accounts'
 const ID_COUNTER_KEY = 'mock_account_id_counter'

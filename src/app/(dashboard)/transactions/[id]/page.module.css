@@ -1,0 +1,122 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+.title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-secondary);
+  margin: 0;
+}
+
+.content {
+  background: var(--color-card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1);
+  width: fit-content;
+  min-width: 500px;
+}
+
+.button {
+  margin-bottom: 15px;
+}
+
+.headerRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.detailsCard {
+  padding: var(--spacing-lg);
+}
+
+.detailItem {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-md) 0;
+  border-bottom: 1px solid var(--color-neutral-light);
+}
+
+.detailItem:last-child {
+  border-bottom: none;
+}
+
+.detailLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-medium);
+}
+
+.detailValue {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-normal);
+  color: var(--color-secondary);
+  margin: 0;
+  padding-left: calc(18px + var(--spacing-sm));
+}
+
+.error {
+  color: #dc2626;
+  font-weight: var(--font-weight-medium);
+}
+
+.accountLink {
+  color: var(--color-secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.accountLink:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
+}
+
+.statusBadge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: var(--border-radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  margin-left: calc(18px + var(--spacing-sm));
+}
+
+.statusBadge.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.statusBadge.warning {
+  background-color: #fff3cd;
+  color: #856404;
+}
+
+.statusBadge.danger {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-md);
+  }
+
+  .content {
+    padding: var(--spacing-md);
+    min-width: auto;
+    width: 100%;
+  }
+
+  .title {
+    font-size: var(--font-size-2xl);
+  }
+}

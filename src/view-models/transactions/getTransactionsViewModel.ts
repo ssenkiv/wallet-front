@@ -1,4 +1,4 @@
-import Transaction from '@/modules/transactions/domain/transaction'
+import { Transaction } from '@/modules/transactions/domain/transaction'
 import getTransactionViewModel from './getTransactionViewModel'
 import { TransactionViewModel } from './transactionViewModel'
 

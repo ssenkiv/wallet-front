@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query'
 const getAllFn = getAll(mockWalletRepository)
 
 export function useGetAllWallets () {
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ['wallets'],
     queryFn: () => getAllFn(),
   })
@@ -13,6 +13,6 @@ export function useGetAllWallets () {
   return {
     data,
     isLoading,
-    isError,
+    error,
   }
 }

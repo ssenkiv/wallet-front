@@ -4,7 +4,7 @@ import useCreateWallet from '@/hooks/wallets/useCreateWallet'
 import styles from './page.module.css'
 import { useRouter } from 'next/navigation'
 import { useForm } from 'react-hook-form'
-import { CreateWalletRequest } from '@/modules/wallets/types/createWalletRequest'
+import { CreateWalletCommand } from '@/modules/wallets/types/createWalletCommand'
 import Card from '@/components/Card/Card'
 import FormInput from '@/components/FormInput/FormInput'
 import Button from '@/components/Button/Button'
@@ -20,16 +20,15 @@ export default function CreateWalletPage() {
     const {
       target: { value },
     } = event
-    console.log(value)
-    setCurrencyV(value ?? 'Random')
+    setCurrencyV(value ?? '')
   }
   const {
     register,
     handleSubmit,
     formState: { isDirty, errors },
-  } = useForm<CreateWalletRequest>()
+  } = useForm<CreateWalletCommand>()
 
-  const onHandle = (data: CreateWalletRequest) => {
+  const onHandle = (data: CreateWalletCommand) => {
     if (isDirty) {
       mutate(data)
       router.push('/wallets')

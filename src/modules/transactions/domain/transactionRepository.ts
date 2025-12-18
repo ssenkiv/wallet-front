@@ -1,9 +1,9 @@
-import DepositCommand from '@/modules/transactions/types/depositCommand'
-import Transaction from '@/modules/transactions/domain/transaction'
-import WithdrawCommand from '@/modules/transactions/types/withdrawCommand'
-import TransferCommand from '@/modules/transactions/types/transferCommand'
+import { DepositCommand } from '@/modules/transactions/types/depositCommand'
+import { Transaction } from '@/modules/transactions/domain/transaction'
+import { WithdrawCommand } from '@/modules/transactions/types/withdrawCommand'
+import { TransferCommand } from '@/modules/transactions/types/transferCommand'
 
-export default interface TransactionRepository {
+export interface TransactionRepository {
   deposit (depositCommand: DepositCommand): Promise<Transaction>;
 
   withdraw (withdrawCommand: WithdrawCommand): Promise<Transaction>;

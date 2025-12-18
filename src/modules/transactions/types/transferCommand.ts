@@ -1,6 +1,6 @@
 import { Currency } from '@/modules/wallets/domain/currency'
 
-export default interface TransferCommand {
+export interface TransferCommand {
   accountIdFrom: number
   accountIdTo: number
   amount: number

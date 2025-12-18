@@ -3,7 +3,7 @@ import { Currency } from '@/modules/wallets/domain/currency'
 export type TransactionStatus = 'pending' | 'completed' | 'failed'
 export type TransactionType = 'deposit' | 'withdraw' | 'transfer'
 
-export default interface Transaction {
+export interface Transaction {
   transactionId: number
   type: TransactionType
   accountIdFrom?: number

@@ -1,5 +1,5 @@
-import { AccountRepository } from '@/modules/accounts/domain/AccountRepository';
-import { Account } from '@/modules/accounts/domain/Account';
+import { AccountRepository } from '@/modules/accounts/domain/accountRepository';
+import { Account } from '@/modules/accounts/domain/account';
 
 export interface AccountUpdateRequest {
   id: number;

@@ -1,4 +1,4 @@
-import Transaction from '@/modules/transactions/domain/transaction'
+import { Transaction } from '@/modules/transactions/domain/transaction'
 import { TransactionViewModel } from './transactionViewModel'
 
 const CURRENCY_SYMBOLS: Record<string, string> = {

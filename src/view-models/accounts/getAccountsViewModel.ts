@@ -1,4 +1,4 @@
-import { Account } from '@/modules/accounts/domain/Account';
+import { Account } from '@/modules/accounts/domain/account';
 import getAccountViewModel from '@/view-models/accounts/getAccountViewModel';
 
 export function getAccountsViewModel(accounts: Account[]) {
