@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import useGetAccount from '@/hooks/accounts/useGetAccount';
-import { AccountViewModel } from '@/view-models/accounts/AccountViewModel';
+import { AccountViewModel } from '@/view-models/accounts/accountViewModel';
 import getAccountViewModel from '@/view-models/accounts/getAccountViewModel';
 
 export default function useAccountViewModel(id: number) {

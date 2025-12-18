@@ -1,5 +1,5 @@
 import { Account } from '@/modules/accounts/domain/Account'
-import { AccountViewModel } from './AccountViewModel'
+import { AccountViewModel } from './accountViewModel'
 
 const DEFAULT_AVATAR = '/Shevchenko_Taras.jpg'
 
