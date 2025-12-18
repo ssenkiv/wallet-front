@@ -3,6 +3,7 @@ import { Roboto } from 'next/font/google';
 import '../styles/globals.css';
 import { ReactNode } from 'react';
 import { ReactQueryProvider } from '@/components/providers/ReactQueryProvider';
+import { ToastProvider } from '@/components/providers/ToastProvider';
 
 const roboto = Roboto({
   weight: ['400', '700'],
@@ -22,7 +23,9 @@ export default function RootLayout({
       <html lang="en" className={roboto.className}>
       <body>
       <ReactQueryProvider>
-        {children}
+        <ToastProvider>
+          {children}
+        </ToastProvider>
       </ReactQueryProvider>
       </body>
       </html>
